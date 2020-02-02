@@ -85,7 +85,8 @@ if (params.tree) {include './modules/raxml' params(output: params.output)}
 workflow {
 
   prokka(rename(fasta_input_ch))
-  
+
+/*  
   gff_ch = prokka.out[0]
   faa_ch = prokka.out[1].collect()
 
@@ -132,7 +133,7 @@ workflow {
 
   build_html_ch = identity_ch.join(combine_roary_ilp.out[0])
   generate_html(build_html_ch, roary.out.collect(), combine_roary_ilp.out[1].collect(), nw_display.out.collect())
-
+*/
   if (params.tree) {raxml(combine_msa.out)}
 }
 
