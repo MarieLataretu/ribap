@@ -2,6 +2,7 @@
 
 process prokka {
   label 'prokka'
+  errorStrategy{task.exitStatus=1 ?'ignore':'terminate'}
   publishDir "${params.output}/prokka", mode: 'copy', pattern: "${name}.faa" 
 
   input: 
